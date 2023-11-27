@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h3>All comments</h4>
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered">
+            <thead class="bg-dark text-center">
+                <tr class="text-white">
+                    <th>Id</th>
+                    <th>Publisher</th>
+                    <th>Approve comments</th>
+                    <th>Date</th>
+                    <th>Comment Body</th>
+                    <th>Commented post</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-center categories-objects-list">
+                {{#each comments}}
+                <tr>
+                    <td>{{komentarz_id}}</td>
+                    <td style="width: auto;">{{uzytkownik_imie}} {{uzytkownik_nazwisko}}</td>
+                    <td>{{komentarz_zatwierdzony}}</td>
+                    <td>{{komentarz_data}}</td>
+                    <td>{{komentarz_tresc}}</td>
+                    <td>{{wpis_tytul}}</td>
+                    <td class="d-flex justify-content-center">
+                        <form action="/admin/comments/accept/{{komentarz_id}}?newMethod=PUT" method="post">
+                            <button class="btn btn-outline-warning mr-2" type="submit">Approve</button>
+                        </form>
+                        <form action="/admin/comments/delete/{{komentarz_id}}?newMethod=DELETE" method="post">
+                            <button class="btn btn-outline-danger mr-2" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

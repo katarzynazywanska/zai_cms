@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h3>All users</h4>
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered">
+            <thead class="bg-dark text-center">
+                <tr class="text-white">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Post count</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="text-center users-objects-list">
+                {{#each users}}
+                <tr>
+                    <td>{{uzytkownik_id}}</td>
+                    <td>{{uzytkownik_imie}} {{uzytkownik_nazwisko}}</td>
+                    <td>{{uzytkownik_email}}</td>
+                    <td>{{post_count}}</td>
+                    <td class="d-flex justify-content-center">
+                        <form action="/admin/users/delete/{{uzytkownik_id}}?newMethod=DELETE" method="post">
+                            <button class="btn btn-outline-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+</div>

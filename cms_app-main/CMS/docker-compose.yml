@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    container_name: my-postgres-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - "5432:5432"
+    expose:
+      - 5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./sql/postgres.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # - ./sql/postgres-data.sql:/docker-entrypoint-initdb.d/postgres-data.sql
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: always
+      
+  server:
+    image: cms:nodejs_app
+    environment:
+      DB_SCHEMA: public
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+        
+volumes:
+  cms-app-db:

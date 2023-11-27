@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h3>Most Active users</h4>
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered">
+            <thead class="bg-dark text-center">
+                <tr class="text-white">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Post count</th>
+                </tr>
+            </thead>
+            <tbody class="text-center users-objects-list">
+                {{#each users}}
+                <tr>
+                    <td>{{uzytkownik_imie}} {{uzytkownik_nazwisko}}</td>
+                    <td>{{uzytkownik_email}}</td>
+                    <td>{{post_count}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+</div>

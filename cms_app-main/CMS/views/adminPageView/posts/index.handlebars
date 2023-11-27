@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h1>All posts</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="bg-dark text-center">
+            <tr class="text-white">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Allow comments</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {{#each posts}}
+            <tr>
+                <td>{{wpis_id}}</td>
+                <td>{{wpis_tytul}}</td>
+                <td>{{wpis_status}}</td>
+                <td>{{wpis_data_opublikowania}}</td>
+                <td>{{wpis_odblokuj_komentarze}}</td>
+                <td>{{kategoria_tytul}}</td>
+                <td>{{uzytkownik_imie}} {{uzytkownik_nazwisko}}</td>
+                <td class="d-flex justify-content-center">
+                    <a href="/admin/posts/edit/{{wpis_id}}" class="btn btn-outline-warning mr-2">Edit post</a>                    
+                    <form action="/admin/posts/delete/{{wpis_id}}?newMethod=DELETE" method="post">
+                        <button class="btn btn-outline-danger" type="submit">Delete post</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+    <h1>Create New Post</h1>
+    <div class="row p-4">
+        <div class="col-md-10">
+        <form action="/admin/posts/create" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter The Title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="file">File Upload</label>
+                <input type="file" name="file" id="file" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="draft">Draft</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category" id="category" class="form-control">
+                    {{#each categories}}
+                        <option value="{{kategoria_id}}">{{kategoria_tytul}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="form-check ml-3">
+                <label for="allowComments">
+                    <input type="checkbox" class="form-chech-input" id="allowComments" name="allowComments">
+                    Allow Comments
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="articleContent">Content</label>
+                <textarea name="articleContent" id="articleContent" class="form-control" placeholder="Enter your content here" rows="10"></textarea>
+            </div>
+            <button class="btn btn-outline-success btn-lg" type="submit">Create Post</button>
+        </form>
+        </div>
+    </div>
+</div>

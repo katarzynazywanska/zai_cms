@@ -1,0 +1,36 @@
+{
+    "name": "cms",
+    "version": "1.0.0",
+    "description": "CMS app",
+    "main": "application.js",
+    "scripts": {
+        "preinstall": "npm i nodemon -g",
+        "start": "nodemon"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Putrus/CMS.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Putrus/CMS/issues"
+    },
+    "homepage": "https://github.com/Putrus/CMS#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "connect-flash": "^0.1.1",
+        "express": "^4.18.1",
+        "express-fileupload": "^1.4.0",
+        "express-handlebars": "^6.0.6",
+        "express-session": "^1.17.3",
+        "flash": "^1.1.0",
+        "handlebars": "^4.7.7",
+        "method-override": "^3.0.0",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
+        "path": "^0.12.7",
+        "pg": "^8.8.0",
+        "popups": "^1.1.3"
+    }
+}

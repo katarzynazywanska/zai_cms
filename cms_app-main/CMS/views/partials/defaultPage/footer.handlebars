@@ -1,0 +1,62 @@
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; SZT - CMS project 2023 </p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(document).ready(function () {
+    setTimeout(function () {
+      $('.auto-hide').slideUp(300);
+    }, 2000);
+
+    $("#createCategoryButton").on('click', function (e) {
+      e.preventDefault();
+      var data = $("#categoryTitle").val();
+
+      $.ajax({
+        url: '/admin/categories',
+        type: 'POST',
+        data: { categoryTitle: data },
+        success: function (response) {
+          var html =
+            `<tr>
+                          <td>${response.kategoria_id}</td>
+                          <td>${response.kategoria_tytul}</td>
+                          <td class="d-flex justify-content-center">
+                              <a href="/admin/categories/edit/${response.kategoria_id}" class="btn btn-outline-warning mr-2">Edit</a>
+                              <form action="/admin/categories/delete/${response.kategoria_id}?newMethod=DELETE" method="post">
+                                  <button class="btn btn-outline-danger" type="submit">Delete</button>
+                              </form>
+                          </td>
+                      </tr>`;
+          $('.categories-objects-list').append(html);
+        }
+      })
+    })
+
+    $("#updateCategoryButton").on('click', function (e) {
+      e.preventDefault();
+      var data = $("#categoryTitle").val();
+      var id = $("#categoryId").val();
+
+      $.ajax({
+        url: `/admin/categories/edit/${id}`,
+        type: 'POST',
+        data: { categoryTitle: data, categoryId: id },
+        success: function (response) {
+          window.location.href = response.url;
+        }
+      });
+    });
+
+  });
+</script>
+</body>
+
+</html>

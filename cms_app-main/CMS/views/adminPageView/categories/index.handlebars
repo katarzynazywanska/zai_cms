@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h3>All categories</h4>
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered">
+            <thead class="bg-dark text-center">
+                <tr class="text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="text-center categories-objects-list">
+                {{#each categories}}
+                <tr>
+                    <td>{{kategoria_id}}</td>
+                    <td>{{kategoria_tytul}}</td>
+                    <td class="d-flex justify-content-center">
+                        <a href="/admin/categories/edit/{{kategoria_id}}" class="btn btn-outline-warning mr-2">Edit</a>
+                        <form action="/admin/categories/delete/{{kategoria_id}}?newMethod=DELETE" method="post">
+                            <button class="btn btn-outline-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+
+    <div class="row p-4">
+        <div class="col-md-10">
+            <form action="/admin/categories/create" method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="categoryTitle" name="title" placeholder="Enter Title">
+                </div>
+                <button class="btn btn-outline-success btn-lg" id="createCategoryButton" type="submit">Create Category</button>
+            </form>
+        </div> 
+    </div>
+
+</div>
