@@ -267,7 +267,7 @@ module.exports = {
             "LEFT JOIN " + 
                 "wpisy w ON u.uzytkownik_id = w.wpis_autor_id " + 
             "GROUP BY " +
-                "u.uzytkownik_id, u.uzytkownik_imie, u.uzytkownik_nazwisko, u.uzytkownik_email ORDER BY post_count DESC;" 
+                "u.uzytkownik_id, u.uzytkownik_imie, u.uzytkownik_nazwisko, u.uzytkownik_email ORDER BY post_count DESC LIMIT 100;" 
                 
         var renderString = 'adminPageView/users/mostActiveUsers';
         var argName = 'users';
