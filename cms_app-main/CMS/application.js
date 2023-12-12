@@ -5,7 +5,7 @@ const hbs = require('express-handlebars');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const expFileUpload = require('express-fileupload');
+//const expFileUpload = require('express-fileupload');
 const passport = require('passport');
 
 const { selectOpt } = require('./config/utils');
@@ -40,7 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(variables);
-app.use(expFileUpload());
+//app.use(expFileUpload());
 
 /* Setup view engine
     Handlebars */
