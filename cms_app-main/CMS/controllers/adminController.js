@@ -184,7 +184,8 @@ module.exports = {
             "uzytkownicy.uzytkownik_imie, uzytkownicy.uzytkownik_nazwisko " +
             "FROM komentarze " +
             "INNER JOIN wpisy ON komentarze.komentarz_wpis_id = wpisy.wpis_id " +
-            "INNER JOIN uzytkownicy ON komentarze.komentarz_autor_id = uzytkownicy.uzytkownik_id";
+            "INNER JOIN uzytkownicy ON komentarze.komentarz_autor_id = uzytkownicy.uzytkownik_id " + 
+            "ORDER BY komentarze.komentarz_id ASC";
         var renderString = 'adminPageView/comments/index';
         var argName = 'comments';
         getObjectFromDb(query, res, renderString, argName);
@@ -219,7 +220,7 @@ module.exports = {
             "LEFT JOIN " + 
                 "wpisy w ON u.uzytkownik_id = w.wpis_autor_id " + 
             "GROUP BY " +
-                "u.uzytkownik_id, u.uzytkownik_imie, u.uzytkownik_nazwisko, u.uzytkownik_email ORDER BY u.uzytkownik_id DESC;" 
+                "u.uzytkownik_id, u.uzytkownik_imie, u.uzytkownik_nazwisko, u.uzytkownik_email ORDER BY u.uzytkownik_id ASC;" 
 
         var renderString = 'adminPageView/users/index';
         var argName = 'users';
