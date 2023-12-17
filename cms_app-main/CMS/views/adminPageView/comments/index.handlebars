@@ -12,6 +12,7 @@
                     <th>Approve comments</th>
                     <th>Date</th>
                     <th>Comment Body</th>
+                    <th>Commented post ID</th>
                     <th>Commented post</th>
                     <th>Action</th>
                 </tr>
@@ -25,6 +26,7 @@
                     <td>{{komentarz_zatwierdzony}}</td>
                     <td>{{komentarz_data}}</td>
                     <td>{{komentarz_tresc}}</td>
+                    <td>{{wpis_id}}</td>
                     <td>{{wpis_tytul}}</td>
                     <td class="d-flex justify-content-center">
                         <form action="/admin/comments/accept/{{komentarz_id}}?newMethod=PUT" method="post">

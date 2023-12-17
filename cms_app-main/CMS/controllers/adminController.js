@@ -14,7 +14,8 @@ module.exports = {
             "uzytkownicy.uzytkownik_imie, uzytkownicy.uzytkownik_nazwisko " +
             "FROM wpisy " +
             "INNER JOIN kategorie ON wpisy.wpis_kategoria_id = kategorie.kategoria_id " +
-            "INNER JOIN uzytkownicy ON wpisy.wpis_autor_id = uzytkownicy.uzytkownik_id";
+            "INNER JOIN uzytkownicy ON wpisy.wpis_autor_id = uzytkownicy.uzytkownik_id " +
+            "ORDER BY ";
         var renderString = 'adminPageView/posts/index';
         var argName = 'posts';
         getObjectFromDb(query, res, renderString, argName);
@@ -103,7 +104,7 @@ module.exports = {
     },
 
     getCategories: (req, res) => {
-        var query = "SELECT kategoria_id, kategoria_tytul FROM kategorie";
+        var query = "SELECT kategoria_id, kategoria_tytul FROM kategorie ORDER BY kategoria_id ASC;";
         var renderString = 'adminPageView/categories/index';
         var argName = 'categories';
         getObjectFromDb(query, res, renderString, argName);
@@ -180,7 +181,7 @@ module.exports = {
             "komentarze.komentarz_id, komentarze.komentarz_zatwierdzony, " +
             "komentarze.komentarz_tresc, " +
             "to_char(komentarze.komentarz_data,'DD-MM-YYYY') As komentarz_data, " +
-            "wpisy.wpis_tytul, " +
+            "wpisy.wpis_id, wpisy.wpis_tytul, " +
             "uzytkownicy.uzytkownik_imie, uzytkownicy.uzytkownik_nazwisko " +
             "FROM komentarze " +
             "INNER JOIN wpisy ON komentarze.komentarz_wpis_id = wpisy.wpis_id " +
